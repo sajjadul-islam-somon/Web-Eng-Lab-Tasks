@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Validation</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <section class="formcard">
+        <div class="formfield">
+            <form action="" class="login-form" id="loginForm">
+                <fieldset>
+                    <h2>Signup</h2>
+                    <div class="error-message" id="errorMessage"></div>
+
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" />
+                    <div id="usernameError" class="error-message"></div>
+                    <div id="usernameOk" class="ok-message"></div>
+
+                    <br />
+
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" placeholder="Enter your password" />
+                    <div id="passwordError" class="error-message"></div>
+                    <div id="passwordOk" class="ok-message"></div>
+
+                    <br />
+
+                    <label for="licensePlate">License Plate</label>
+                    <input type="text" id="licensePlate" name="licensePlate" placeholder="DHA-L-12-1212" />
+                    <div id="licensePlateError" class="error-message"></div>
+                    <div id="licensePlateOk" class="ok-message"></div>
+
+                    <br />
+
+                    <label for="ipaddress">IP Address</label>
+                    <input type="text" id="ipaddress" name="ipaddress" placeholder="192.100.10.1" />
+                    <div id="ipaddressError" class="error-message"></div>
+                    <div id="ipaddressOk" class="ok-message"></div>
+
+                    <br />
+
+                    <label for="hexcode">Hex Code</label>
+                    <input type="text" id="hexcode" name="hexcode" placeholder="#10F001" />
+                    <div id="hexcodeError" class="error-message"></div>
+                    <div id="hexcodeOk" class="ok-message"></div>
+
+                    <br /><br />
+                    <button type="submit">Login</button>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+    <script src="script.js" defer></script>
+</body>
+
+</html>

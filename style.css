@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(36, 36, 36);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 10px;
+    color: white;
+}
+
+.navbar .logo,
+.navbar .menu,
+.navbar .search {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .menu a,
+.navbar .search a {
+    color: white;
+    margin: 10px;
+}
+
+
+.menu a {
+    text-decoration: none;
+}
+
+.navbar input[type="text"] {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.profile {
+    width: 30px;
+    height: 30px;
+    background: url("https://cdn-icons-png.flaticon.com/512/847/847969.png");
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.about {
+    background: url("https://applescoop.org/image/wallpapers/mac/novitec-mclaren-shiny-black-luxury-cars-most-popular-4k-5k-hd-desktop-screensavers-wallpapers-of-2025-for-apple-macbook-air-and-pro-imac-mac-mini-windows-pc-and-more-free-download-15-03-2025-1742073355-hd-wallpaper.jpg") center/cover;
+    height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.about p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.about .button a {
+    text-decoration: none;
+    color: white;
+    background-color: #e63946;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.card1 {
+    padding: 20px;
+    display: flex;
+    grid-gap: 20px;
+    max-width: 800px;
+    margin: auto;
+    justify-content: center;
+}
+
+.card2 {
+    padding: 20px;
+    display: flex;
+    grid-gap: 20px;
+    max-width: 800px;
+    margin: auto;
+    justify-content: center;
+}
+
+.info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.info img {
+    width: 220px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info h3 {
+    margin-top: 10px;
+}
+
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer a {
+    color: rgb(0, 217, 255);
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+}
+
+
+
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.formcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.formfield {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h2{
+    padding: 10px 0px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 2px;
+    padding: 5px 0 0 0;
+    display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+}
+
+.ok-message {
+    color: green;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+}
+
+
+button {
+    font-weight: 600;
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 0px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color:  rgb(0, 132, 255);
+    font-weight: 710;
+}
