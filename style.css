@@ -135,6 +135,11 @@ body {
 }
 
 
+.ok-message {
+    color: green;
+    font-size: 0.9rem;
+}
+
 
 
 /* Reset */

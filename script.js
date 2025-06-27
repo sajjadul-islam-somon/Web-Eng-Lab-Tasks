@@ -27,11 +27,9 @@ function validateUsername() {
     return isValid;
 }
 
-
 document.getElementById('password').addEventListener('input', validatePassword);
 function validatePassword() {
     const password = document.getElementById('password').value;
-
     let isValid = true;
     let errorMessages = [];
 
