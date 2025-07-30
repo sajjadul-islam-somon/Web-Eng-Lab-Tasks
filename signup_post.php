@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -13,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $run = mysqli_query($con, $query);
 
     if ($run) {
+        $_SESSION['current_username'] = $username; // Save current username in session
         header("Location: blog_page.php");
         exit(); // important to stop script execution after redirect
     } else {

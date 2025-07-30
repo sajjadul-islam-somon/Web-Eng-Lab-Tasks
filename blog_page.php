@@ -1,28 +1,30 @@
 <?php
-    include 'connect.php';
+session_start();
+include 'connect.php';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $un = $_POST['uname'];
-        $blog = $_POST['userBlog'];
+    $un = $_POST['uname'];
+    $blog = $_POST['userBlog'];
 
-        $query = "INSERT INTO postData (username, blogPost) VALUES ('$un', '$blog')";
-        $run = mysqli_query($con, $query);
-    }
-
-    $query = "SELECT * FROM postData ORDER BY id DESC";
+    $query = "INSERT INTO postData (username, blogPost) VALUES ('$un', '$blog')";
     $run = mysqli_query($con, $query);
+}
 
-    $posts = [];
-    if (mysqli_num_rows($run) > 0) {
-        while ($row = mysqli_fetch_assoc($run)) {
-            $posts[] = $row;
-        }
+$query = "SELECT * FROM postData ORDER BY id DESC";
+$run = mysqli_query($con, $query);
+
+$posts = [];
+if (mysqli_num_rows($run) > 0) {
+    while ($row = mysqli_fetch_assoc($run)) {
+        $posts[] = $row;
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +32,7 @@
     <title>Web-Blog</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
@@ -40,9 +43,9 @@
             <div class="blog-navbar-center">
                 <span class="blogs-area">web-blog</span>
             </div>
-            <div class="blog-navbar-right">
-                <span class="blog-user-status">Guest User</span>
-            </div>
+            <span class="blog-user-status">
+                <?php echo isset($_SESSION['current_username']) ? htmlspecialchars($_SESSION['current_username']) : 'Guest User'; ?>
+            </span>
         </nav>
     </header>
 
