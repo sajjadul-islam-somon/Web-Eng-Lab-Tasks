@@ -27,9 +27,11 @@ function validateUsername() {
     return isValid;
 }
 
+
 document.getElementById('password').addEventListener('input', validatePassword);
 function validatePassword() {
     const password = document.getElementById('password').value;
+
     let isValid = true;
     let errorMessages = [];
 
@@ -134,8 +136,6 @@ function validateIpAddress() {
 
 
 document.getElementById('hexcode').addEventListener('input', validateHexCode);
-document.getElementById('hexcode').addEventListener('input', validateHexCode);
-
 function validateHexCode() {
     const hexcode = document.getElementById('hexcode').value;
     const hexcodeRegex = /^#([A-Fa-f0-9]{3}){1,2}$/i;
@@ -165,14 +165,17 @@ function validateHexCode() {
 
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
 
     const isUsernameValid = validateUsername();
     const isPasswordValid = validatePassword();
-    const isAddressValid = validateAddress();
+    const isLicensePlateValid = validateLicensePlate();
+    const isIpAddressValid = validateIpAddress();
+    const isHexCodeValid = validateHexCode();
 
-    if (isUsernameValid && isPasswordValid && isAddressValid) {
-        alert('Form submitted successfully!');
+    if (isUsernameValid && isPasswordValid && isLicensePlateValid && isIpAddressValid && isHexCodeValid) {
+        document.getElementById('loginForm').submit();
+    } else {
+        alert('Please fix the errors before submitting.');
     }
 });
-
