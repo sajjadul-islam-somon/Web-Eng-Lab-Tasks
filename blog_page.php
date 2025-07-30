@@ -30,7 +30,8 @@ if (mysqli_num_rows($run) > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-Blog</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
@@ -43,9 +44,10 @@ if (mysqli_num_rows($run) > 0) {
             <div class="blog-navbar-center">
                 <span class="blogs-area">web-blog</span>
             </div>
-            <span class="blog-user-status">
-                <?php echo isset($_SESSION['current_username']) ? htmlspecialchars($_SESSION['current_username']) : 'Guest User'; ?>
-            </span>
+            <div class="blog-user-status">
+                <div><?php echo isset($_SESSION['current_username']) ? htmlspecialchars($_SESSION['current_username']) : 'Guest User'; ?></div>
+                <i class="fa fa-user-circle"></i>
+            </div>
         </nav>
     </header>
 
