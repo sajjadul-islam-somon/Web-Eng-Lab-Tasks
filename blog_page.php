@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $un = $_POST['uname'];
     $blog = $_POST['userBlog'];
 
-    $query = "INSERT INTO postData (username, blogPost) VALUES ('$un', '$blog')";
+    $query = "INSERT INTO postdata (username, blogPost) VALUES ('$un', '$blog')";
     $run = mysqli_query($con, $query);
 }
 
-$query = "SELECT * FROM postData ORDER BY id DESC";
+$query = "SELECT * FROM postdata ORDER BY id DESC";
 $run = mysqli_query($con, $query);
 
 $posts = [];
