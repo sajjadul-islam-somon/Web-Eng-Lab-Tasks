@@ -3,24 +3,29 @@ session_start();
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $un = $_POST['uname'];
     $blog = $_POST['userBlog'];
-
     $query = "INSERT INTO postdata (username, blogPost) VALUES ('$un', '$blog')";
-    $run = mysqli_query($con, $query);
+    mysqli_query($con, $query);
 }
 
-$query = "SELECT * FROM postdata ORDER BY id DESC";
+// Search handling
+$posts = [];
+if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+    $token = mysqli_real_escape_string($con, trim($_GET['search']));
+    $query = "SELECT * FROM postdata WHERE username LIKE '%$token%' OR blogPost LIKE '%$token%' ORDER BY id DESC";
+} else {
+    $query = "SELECT * FROM postdata ORDER BY id DESC";
+}
 $run = mysqli_query($con, $query);
 
-$posts = [];
 if (mysqli_num_rows($run) > 0) {
     while ($row = mysqli_fetch_assoc($run)) {
         $posts[] = $row;
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,25 +69,46 @@ if (mysqli_num_rows($run) > 0) {
 
             <div class="middle">
                 <h3>Submit Post</h3>
-                <form action="" method="post">
+                <form action="" method="post" class="blog-form">
                     <input type="text" id="uname" name="uname" placeholder="Enter your username" required><br>
                     <textarea id="userBlog" name="userBlog" placeholder="Write your post..." required></textarea><br>
                     <button type="submit">Submit</button>
                 </form>
 
+                <br>
+                <hr>
                 <h3>Recent Posts</h3>
-                <div id="submittedData">
-                    <?php if (empty($posts)): ?>
-                        <p>No posts available!</p>
-                    <?php else: ?>
-                        <?php foreach ($posts as $post): ?>
-                            <div class="submitted-post">
-                                <h4><?php echo htmlspecialchars($post['username']); ?></h4>
-                                <p><?php echo nl2br(htmlspecialchars($post['blogPost'])); ?></p>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
+                <form method="GET" action="" class="search-row">
+                    <input type="text" id="searchBar" name="search" placeholder="Search posts...">
+                    <button type="submit">Search</button>
+                </form>
+
+                <?php if (isset($_SESSION['message'])): ?>
+                    <div style="color: green; margin-bottom: 10px;"><?php echo $_SESSION['message'];
+                                                                    unset($_SESSION['message']); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php foreach ($posts as $post) { ?>
+                    <div class="submitted-post">
+                        <h4><?php echo htmlspecialchars($post['username']); ?></h4>
+                        <p><?php echo nl2br(htmlspecialchars($post['blogPost'])); ?></p>
+
+                        <div class="post-actions">
+                            <form action="update_post.php" method="POST">
+                                <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                <button type="submit" class="btn-update">Update</button>
+                            </form>
+
+                            <form action="delete_post.php" method="POST">
+                                <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } ?>
+
+
             </div>
 
             <div class="right">
@@ -94,4 +120,5 @@ if (mysqli_num_rows($run) > 0) {
     </main>
 
 </body>
+
 </html>
